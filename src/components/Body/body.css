@@ -1,0 +1,20 @@
+.Body {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 920px) {
+    .Body {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 2rem;
+        max-width: 1120px;
+        margin-inline: auto;
+        gap: 2rem;
+        & > * {
+            flex: 1;
+        }
+    }
+}
