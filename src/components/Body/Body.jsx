@@ -6,7 +6,7 @@ import "./body.css"
 
 const Body = () => {
   return (
-    <div className="Body">
+    <div className="Body container">
       <DesktopProducts />
         <ProductsSwiper />
         <Info />
