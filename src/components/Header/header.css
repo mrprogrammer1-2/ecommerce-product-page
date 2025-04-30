@@ -114,6 +114,7 @@
     left: -100%;
     background-color: var(--White);
     width: 20rem;
+    height: 100vh;
     padding: 2rem 1.5rem;
     z-index: 100;
 }

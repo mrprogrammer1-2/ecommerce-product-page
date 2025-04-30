@@ -66,6 +66,7 @@ export const DataProvider = ( { children }) => {
             setCartCount,
             handleCartCount,
             showCart,
+            setShowCart,
             handleShowCart,
             handleAddToCart,
             cartItems,

@@ -3,13 +3,30 @@ import { FiShoppingCart } from "react-icons/fi";
 import imgAvatar from "../../assets/images/image-avatar.png";
 import { MdClose } from "react-icons/md";
 import "./header.css"
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import DataContext from "../../context/DataContext";
 
 const Header = () => {
 
   const [menuOpen, setMenuOpen] = useState(false);
   const { handleShowCart, itemsAmount } = useContext(DataContext)
+  const menuRef = useRef(null)
+
+  useEffect(()=> {
+    const handleClickOut = (e)=> {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false)
+      }
+    }
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOut)
+    }
+
+    return ()=> {
+      document.removeEventListener("mousedown", handleClickOut)
+    }
+  }, [menuOpen])
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -44,7 +61,7 @@ const Header = () => {
         </div>
       </nav>
       <div className={`overlay ${menuOpen ? "open" : ""}`}></div>
-      <div className={`menu_mobile ${menuOpen ? "open" : ""}`}>
+      <div ref={menuRef} className={`menu_mobile ${menuOpen ? "open" : ""}`}>
         <MdClose className="close_icon" aria-label="Close" onClick={handleMenuToggle} />
         <ul>
           <li className="menu_item">Collections</li>
